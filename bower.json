@@ -1,6 +1,6 @@
 {
   "name": "polymer-cookie",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/andreasonny83/polymer-cookie",
   "authors": [
     "Andrea Sonny <andreasonny83@gmail.com>"
@@ -16,9 +16,7 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ],
   "repository": {
     "type": "git",
