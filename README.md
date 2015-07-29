@@ -13,6 +13,43 @@ Cookie Web Component for Polymer 1.0
 
 Note: The `params` attribute must be double quoted JSON.
 
+## Properties
+###name###
+Type: String
+Default value: 'polymer-cookie'
+
+Set the cookie name
+
+###value###
+type: String
+Default value: ''
+
+The cookie value
+
+###path###
+type: String
+Default value: '/'
+
+The cookie path
+
+###time###
+type: Number
+Default value: 1
+
+The expiration time related to the 'format' value.
+Set to -1 to never expire the cookie
+
+###format###
+type: String
+Default value: 'd'
+
+The expiration format time
+* 's' : seconds
+* 'm' : minutes
+* 'h' : hours
+* 'd' : days
+
+
 ## Contributing
 
 1. Fork it!
