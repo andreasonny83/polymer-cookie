@@ -3,10 +3,12 @@ Cookie Web Component for Polymer 1.0
 
 ```html
 <polymer-cookie
-    name="testCookie"
-    val="HelloWorld"
-    time=30
-    format="m"></polymer-cookie>
+    id="user_cookie"
+    name="user_return"
+    value=true
+    time=14
+    format="d">
+</polymer-cookie>
 ```
 
 Note: The `params` attribute must be double quoted JSON.

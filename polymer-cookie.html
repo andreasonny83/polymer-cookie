@@ -10,12 +10,14 @@ The `polymer-cookie` element stores cookies using a web component
 The best practice to use cookie in a Polyper project
 
 	<polymer-cookie
-		name="testCookie"
-		val="HelloWorld"
-		time=30
-		format="m"></polymer-cookie>
+		id="user_cookie"
+		name="user_return"
+		value=true
+		time=14
+		format="d">
+	</polymer-cookie>
 
-This will create a cookie named testCookie that will expires after 30 days
+This will prepare a cookie named user_return that will expires after 2 weeks
 
 Note: The `params` attribute must be double quoted JSON.
 
@@ -33,7 +35,8 @@ Polymer({
 		 */
 		name: {
 			type: String,
-			value: 'newCookie'
+			value: 'polymer-cookie',
+			reflectToAttribute: true
 		},
 
 		/**
@@ -41,7 +44,17 @@ Polymer({
 		 */
 		value: {
 			type: String,
-			value: 'Hello World'
+			value: '',
+			reflectToAttribute: true
+		},
+
+		/**
+		 * The cookie path.
+		 */
+		path: {
+			type: String,
+			value: '/',
+			reflectToAttribute: true
 		},
 
 		/**
@@ -53,7 +66,8 @@ Polymer({
 		 */
 		time: {
 			type: Number,
-			value: 1
+			value: 1,
+			reflectToAttribute: true
 		},
 
 		/**
@@ -67,46 +81,68 @@ Polymer({
 		 */
 		format: {
 			type: String,
-			value: 'd'
+			value: 'd',
+			reflectToAttribute: true
+		},
+
+		/**
+		 * Using the Secure option you can tell the browser (or other http clients)
+		 * to only send the cookie over SSL connections
+		 * @type [Boolean]
+		 */
+		secure: {
+			type: Boolean,
+			value: false,
+			reflectToAttribute: true
 		}
+
 	},
 
 	createCookie: function() {
-		var expire_type = this.format,
-			expire_time = this.time,
-			value       = this.value,
-			date        = new Date();
+		var date = new Date();
 
-		// if we don't have set any value for the cookie,
-		// set a default one
-		if ( value === undefined || value === null || value === '' ) {
-			value = 'hello world';
-		}
-
-		switch( expire_type ) {
+		switch( this.format ) {
 			case 'd':
-				date.setTime( date.getTime() + ( expire_time * 1000 * 24 * 60 * 60 ) );
+				date.setTime( date.getTime() + ( this.time * 1000 * 24 * 60 * 60 ) );
 				break;
 			case 'h':
-				date.setTime( date.getTime() + ( expire_time * 1000 * 60 * 60 ) );
+				date.setTime( date.getTime() + ( this.time * 1000 * 60 * 60 ) );
 				break;
 			case 'm':
-				date.setTime( date.getTime() + ( expire_time * 1000 * 60 ) );
+				date.setTime( date.getTime() + ( this.time * 1000 * 60 ) );
 				break;
 			default:
-				date.setTime( date.getTime() + ( expire_time * 1000 ) );
+				date.setTime( date.getTime() + ( this.time * 1000 ) );
 				break;
 		}
 
-		var output = this.name + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
-
-		document.cookie = output;
+		return ( document.cookie = [
+			encodeURIComponent( this.name ), '=', encodeURIComponent( this.value ),
+			"; expires=" + date.toGMTString(),
+			this.path   && "; path=" + this.path,
+			this.secure ? "; secure" : '',
+			";"
+		].join(''));
 	},
 
-	eraseCookie: function( name ) {
-		var output = this.name + "=; expires=-1;";
+	/**
+	 * Read the cookie value
+	 * @return [String] Return the cookie value in a string format
+	 */
+	readCookie() {
+		var reg = new RegExp("(?:(?:^|.*;\\s*)" + this.name + "\\s*\\=\\s*([^;]*).*$)|^.*$");
+		var myCookie = document.cookie.replace( reg, "$1" );
 
-		document.cookie( output );
+		return myCookie;
+	},
+
+	/**
+	 * Erease the cookie information
+	 */
+	eraseCookie: function() {
+		var output = this.name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;";
+
+		document.cookie = output;
 	}
 
 });
