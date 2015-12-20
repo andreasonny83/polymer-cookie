@@ -129,7 +129,7 @@ Polymer({
 	 * Read the cookie value
 	 * @return [String] Return the cookie value in a string format
 	 */
-	readCookie() {
+	readCookie: function() {
 		var reg = new RegExp("(?:(?:^|.*;\\s*)" + this.name + "\\s*\\=\\s*([^;]*).*$)|^.*$");
 		var myCookie = document.cookie.replace( reg, "$1" );
 
