@@ -117,7 +117,7 @@ Polymer({
 		}
 
 		return ( document.cookie = [
-			this.name '=', this.value,
+			this.name+'=', this.value,
 			"; expires=" + date.toGMTString(),
 			this.path   && "; path=" + this.path,
 			this.secure ? "; secure" : '',
