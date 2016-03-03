@@ -1,4 +1,7 @@
+[![Bower version](https://badge.fury.io/bo/polymer-cookie.svg)](https://badge.fury.io/bo/polymer-cookie)
+
 # polymer-cookie
+
 Cookie Web Component for Polymer 1.0
 
 ```html
