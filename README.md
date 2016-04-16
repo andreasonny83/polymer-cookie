@@ -1,6 +1,7 @@
 # polymer-cookie
 
 <img src="http://benschwarz.github.io/bower-badges/badge@2x.png" width="130" height="30">
+
 [![Bower version](https://badge.fury.io/bo/polymer-cookie.svg)](https://badge.fury.io/bo/polymer-cookie)
 
 Cookie Web Component for Polymer 1.0
