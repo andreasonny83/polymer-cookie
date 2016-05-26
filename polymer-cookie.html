@@ -125,12 +125,20 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
           type: Boolean,
           value: false,
           reflectToAttribute: true
+        },
+        autoUnset: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
         }
       },
 
       ready: function() {
         if ( this.autoSet ) {
           this.createCookie();
+        }
+        if ( this.autoUnset ) {
+          this.eraseCookie();
         }
       },
 
