@@ -61,6 +61,15 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
         },
 
         /**
+         * The cookie domain.
+         */
+        domain: {
+          type: String,
+          value: '',
+          reflectToAttribute: true
+        },
+        
+        /**
          * The cookie path.
          */
         path: {
@@ -116,12 +125,20 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
           type: Boolean,
           value: false,
           reflectToAttribute: true
+        },
+        autoUnset: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
         }
       },
 
       ready: function() {
         if ( this.autoSet ) {
           this.createCookie();
+        }
+        if ( this.autoUnset ) {
+          this.eraseCookie();
         }
       },
 
@@ -148,6 +165,7 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
           "; expires=" + date.toGMTString(),
           this.path && "; path=" + this.path,
           this.secure ? "; secure" : '',
+          this.domain && "; domain=" + this.domain,
           ";"
         ].join(''));
       },
