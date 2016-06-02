@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script>
+      /*
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+      */
+    </script>
+    <link rel="import" href="../polymer-cookie.html">
+  </head>
+  <body>
+    <h1>polymer-cookie</h1>
+    <polymer-cookie
+      id="test_cookie"
+      name="test_cookie"
+      value="hello world"
+      time="3"
+      auto-set
+      format="s">
+    </polymer-cookie>
+
+    <p>
+      Open your browser's code inspector to see the cookie status
+    </p>
+  </body>
+</html>

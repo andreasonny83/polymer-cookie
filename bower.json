@@ -1,6 +1,6 @@
 {
   "name": "polymer-cookie",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/andreasonny83/polymer-cookie",
   "authors": [
     "Andrea Sonny <andreasonny83@gmail.com>"
@@ -9,8 +9,7 @@
   "main": "polymer-cookie.html",
   "keywords": [
     "web-components",
-    "polymer",
-    "x-tag"
+    "polymer"
   ],
   "license": "MIT",
   "ignore": [

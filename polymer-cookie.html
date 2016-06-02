@@ -120,7 +120,7 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
       },
 
       ready: function() {
-        if ( this.autoSet ) {
+        if (!!this.autoSet) {
           this.createCookie();
         }
       },
@@ -130,29 +130,33 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
         var date = new Date();
         var expires;
 
-        switch( this.format ) {
+        switch(this.format) {
           case 'd':
-            date.setTime( date.getTime() + ( this.time * 1000 * 24 * 60 * 60 ) );
+            date.setTime(date.getTime() +
+            this.time * 1000 * 24 * 60 * 60);
             break;
           case 'h':
-            date.setTime( date.getTime() + ( this.time * 1000 * 60 * 60 ) );
+            date.setTime(date.getTime() +
+            this.time * 1000 * 60 * 60);
             break;
           case 'm':
-            date.setTime( date.getTime() + ( this.time * 1000 * 60 ) );
+            date.setTime(date.getTime() +
+            this.time * 1000 * 60);
             break;
           default:
-            date.setTime( date.getTime() + ( this.time * 1000 ) );
+            date.setTime(date.getTime() +
+            this.time * 1000);
             break;
         }
 
         expires = this.time === -1 ? FOREVER : date.toUTCString();
 
-        return ( document.cookie = [
+        return (document.cookie = [
           this.name, '=', this.value,
-          "; expires=" + expires,
-          this.path && "; path=" + this.path,
-          this.secure ? "; secure" : '',
-          ";"
+          '; expires=' + expires,
+          this.path && '; path=' + this.path,
+          this.secure ? '; secure' : '',
+          ';'
         ].join(''));
       },
 
@@ -161,17 +165,19 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
        * @return [String] Return the cookie value in a string format
        */
       readCookie: function() {
-        var reg = new RegExp("(?:(?:^|.*;\\s*)" + this.name + "\\s*\\=\\s*([^;]*).*$)|^.*$");
-        var myCookie = document.cookie.replace( reg, "$1" );
+        var reg = new RegExp('(?:(?:^|.*;\\s*)' +
+                  this.name +
+                  '\\s*\\=\\s*([^;]*).*$)|^.*$');
 
-        return myCookie;
+        return document.cookie.replace(reg, '$1');
       },
 
       /**
        * Erease the cookie information
        */
       eraseCookie: function() {
-        var output = this.name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;";
+        var output = this.name +
+            '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;';
 
         document.cookie = output;
       }
