@@ -126,7 +126,9 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
       },
 
       createCookie: function() {
+        var FOREVER = 'Fri, 31 Dec 9999 23:59:59 GMT';
         var date = new Date();
+        var expires;
 
         switch( this.format ) {
           case 'd':
@@ -143,9 +145,11 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
             break;
         }
 
+        expires = this.time === -1 ? FOREVER : date.toUTCString();
+
         return ( document.cookie = [
           this.name, '=', this.value,
-          "; expires=" + date.toGMTString(),
+          "; expires=" + expires,
           this.path && "; path=" + this.path,
           this.secure ? "; secure" : '',
           ";"
