@@ -62,6 +62,13 @@ Default value: '/'
 
 The cookie path
 
+### domain
+
+type: String
+Default value: ''
+
+The cookie domain
+
 ### time
 
 type: Number

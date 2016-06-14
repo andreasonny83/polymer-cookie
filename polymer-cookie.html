@@ -61,6 +61,15 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
         },
 
         /**
+         * The cookie domain.
+         */
+        domain: {
+          type: String,
+          value: '',
+          reflectToAttribute: true
+        },
+
+        /**
          * The cookie path.
          */
         path: {
@@ -155,6 +164,7 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
           this.name, '=', this.value,
           '; expires=' + expires,
           this.path && '; path=' + this.path,
+          this.domain && "; domain=" + this.domain,
           this.secure ? '; secure' : '',
           ';'
         ].join(''));
