@@ -189,6 +189,10 @@ The following is a simple example for testing your 'test_cookie' in your project
         var output = this.name +
             '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;';
 
+        if (this.domain) {
+          output += "domain=" + this.domain;
+        }
+
         document.cookie = output;
       }
     });
