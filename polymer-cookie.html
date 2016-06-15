@@ -74,7 +74,7 @@ The following is a simple example for testing your 'test_cookie' in your project
          */
         path: {
           type: String,
-          value: '/',
+          value: '',
           reflectToAttribute: true
         },
 
@@ -112,6 +112,17 @@ The following is a simple example for testing your 'test_cookie' in your project
          * @type [Boolean]
          */
         secure: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        },
+
+        /**
+         * HttpOnly
+         *
+         * @type [Boolean]
+         */
+        httpOnly: {
           type: Boolean,
           value: false,
           reflectToAttribute: true
@@ -160,14 +171,15 @@ The following is a simple example for testing your 'test_cookie' in your project
 
         expires = this.time === -1 ? FOREVER : date.toUTCString();
 
-        return (document.cookie = [
+        document.cookie = [
           this.name, '=', this.value,
-          '; expires=' + expires,
-          this.path && '; path=' + this.path,
-          this.domain && "; domain=" + this.domain,
-          this.secure ? '; secure' : '',
+          ';expires=' + expires,
+          !!this.path && ';path=' + this.path,
+          !!this.domain && ";domain=" + this.domain,
+          this.secure ? ';secure' : '',
+          this.httpOnly ? ';HttpOnly' : '',
           ';'
-        ].join(''));
+        ].join('');
       },
 
       /**

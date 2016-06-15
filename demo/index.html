@@ -1,13 +1,8 @@
 <!doctype html>
 <html>
   <head>
+    <title>polymer-cookie demo page</title>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script>
-      /*
-      window.Polymer = window.Polymer || {};
-      window.Polymer.dom = 'shadow';
-      */
-    </script>
     <link rel="import" href="../polymer-cookie.html">
   </head>
   <body>
@@ -16,13 +11,12 @@
       id="test_cookie"
       name="test_cookie"
       value="hello world"
-      time="3"
-      auto-set
-      format="s">
+      time="10"
+      format="s"
+      auto-set>
     </polymer-cookie>
 
-    <p>
-      Open your browser's code inspector to see the cookie status
-    </p>
+    <p>Open your browser's code inspector to see the cookie status.</p>
+    <p>This 'test_cookie' will expire in 10 seconds.</p>
   </body>
 </html>
