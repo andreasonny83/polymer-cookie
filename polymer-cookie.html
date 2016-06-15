@@ -7,7 +7,7 @@
 
 <!--
 The `polymer-cookie` element stores cookies using a web component
-The best practice to use cookie in a Polyper project
+The best practice to use cookie in a Polymer project
 
   <polymer-cookie
     id="test_cookie"
@@ -21,7 +21,7 @@ This will prepare a cookie named test_cookie that will expires after 2 weeks
 
 Note: The `params` attribute must be double quoted JSON.
 
-The following is a siple exaple for testing your 'test_cookie' in your project:
+The following is a simple example for testing your 'test_cookie' in your project:
 
   var cookie = Polymer.dom(document).querySelector('#test_cookie');
 
@@ -55,6 +55,15 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
          * The cookie value.
          */
         value: {
+          type: String,
+          value: '',
+          reflectToAttribute: true
+        },
+
+        /**
+         * The cookie domain.
+         */
+        domain: {
           type: String,
           value: '',
           reflectToAttribute: true
@@ -108,10 +117,10 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
           reflectToAttribute: true
         },
 
-				/**
-				 * Create the cookie automatically as the element is rendered on the DOM
-				 * @type [Boolean]
-				 */
+        /**
+         * Create the cookie automatically as the element is rendered on the DOM
+         * @type [Boolean]
+         */
         autoSet: {
           type: Boolean,
           value: false,
@@ -155,6 +164,7 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
           this.name, '=', this.value,
           '; expires=' + expires,
           this.path && '; path=' + this.path,
+          this.domain && "; domain=" + this.domain,
           this.secure ? '; secure' : '',
           ';'
         ].join(''));
@@ -173,11 +183,15 @@ The following is a siple exaple for testing your 'test_cookie' in your project:
       },
 
       /**
-       * Erease the cookie information
+       * Erase the cookie information
        */
       eraseCookie: function() {
         var output = this.name +
             '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;';
+
+        if (this.domain) {
+          output += "domain=" + this.domain;
+        }
 
         document.cookie = output;
       }
