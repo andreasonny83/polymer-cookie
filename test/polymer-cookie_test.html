@@ -13,12 +13,18 @@
 
     <test-fixture id="basic">
       <template>
+        <polymer-cookie></polymer-cookie>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="auto-set">
+      <template>
         <polymer-cookie auto-set name="tests-are-always" value="amazing" time="15" format="s"></polymer-cookie>
       </template>
     </test-fixture>
 
     <script>
-      suite('<polymer-cookie>', function() {
+      suite('<polymer-cookie> without attributes', function() {
         var element;
 
         suiteSetup(function(){
@@ -29,6 +35,36 @@
           assert.equal(element.is, 'polymer-cookie');
         });
 
+        test('should be correct default properties', function() {
+          assert.equal(element.name, 'polymer-cookie');
+          assert.equal(element.value, '');
+          assert.equal(element.domain, '');
+          assert.equal(element.path, '');
+          assert.equal(element.time, 1);
+          assert.equal(element.format, 'd');
+        });
+      });
+
+      suite('<polymer-cookie> with attributes', function() {
+        var element;
+
+        suiteSetup(function(){
+          element = fixture('auto-set');
+        });
+
+        test('instantiating the element works', function() {
+          assert.equal(element.is, 'polymer-cookie');
+        });
+
+        test('should be correct properties', function() {
+          assert.equal(element.name, 'tests-are-always');
+          assert.equal(element.value, 'amazing');
+          assert.equal(element.domain, '');
+          assert.equal(element.path, '');
+          assert.equal(element.time, 15);
+          assert.equal(element.format, 's');
+        });
+
         test('should be exists a cookie on document after set', function() {
           assert.equal(document.cookie, 'tests-are-always=amazing');
         });
@@ -36,6 +72,7 @@
         test('should be return a correct value when read a cookie', function() {
           assert.equal(element.readCookie(), 'amazing');
         });
+
       });
     </script>
   </body>
