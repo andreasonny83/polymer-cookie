@@ -1,5 +1,12 @@
 # polymer-cookie Changelog
 
+## 1.1.1 - 2016.06.16
+
+*   quickfix on the `createCookie` method
+*   introducing web-component-tester for CI
+*   TravisCI
+*   documentation update
+
 ## 1.1.0 - 2016.06.15
 
 *   introducing Domain

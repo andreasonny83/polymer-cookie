@@ -1,12 +1,14 @@
-# polymer-cookie
+# \<polymer-cookie\>
 
 > Cookie Web Component for Polymer 1.x
 
-[![Bower version](https://badge.fury.io/bo/polymer-cookie.svg)](https://badge.fury.io/bo/polymer-cookie)
+[![npm](https://img.shields.io/npm/v/polymer-cookie.svg?maxAge=86400)]()
+[![Bower](https://img.shields.io/bower/v/polymer-cookie.svg?maxAge=86400)]()
+[![Build Status](https://travis-ci.org/andreasonny83/generator-polymer.svg?branch=master)](https://travis-ci.org/andreasonny83/generator-polymer)
 
 ![](http://benschwarz.github.io/bower-badges/badge@2x.png)
 
-Cookie Web Component for Polymer 1.0
+Cookie Web Component for Polymer 1.x
 
 ```html
 <polymer-cookie
@@ -174,9 +176,13 @@ $ npm install -g polymer-cli
 
 ### Run the demo
 
-To run the element demo:
+First install all the project dependencies with:
 
-Run polymer serve from the repo directory:
+```shell
+$ bower install
+```
+
+Then, run Polymer serve from the repo directory with:
 
 ```shell
 $ polymer serve
@@ -188,9 +194,6 @@ For more information about Polymer CLI have a look at the
 [official documentation](https://www.polymer-project.org/1.0/start/first-element/intro)
 
 ## Contributing
-
-A special thanks to [Cameron](https://github.com/cameronwp)
-and [Pascal](https://github.com/MeTaNoV) for their contributions.
 
 1.  Fork it!
 2.  Create your feature branch: `git checkout -b my-new-feature`

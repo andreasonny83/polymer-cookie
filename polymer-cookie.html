@@ -43,7 +43,9 @@ The following is a simple example for testing your 'test_cookie' in your project
 
       properties: {
         /**
-         * The cookie name.
+         * The cookie name
+         *
+         * @type {String}
          */
         name: {
           type: String,
@@ -52,7 +54,7 @@ The following is a simple example for testing your 'test_cookie' in your project
         },
 
         /**
-         * The cookie value.
+         * The cookie value
          */
         value: {
           type: String,
@@ -61,7 +63,9 @@ The following is a simple example for testing your 'test_cookie' in your project
         },
 
         /**
-         * The cookie domain.
+         * The cookie domain
+         *
+         * @type {String}
          */
         domain: {
           type: String,
@@ -70,7 +74,9 @@ The following is a simple example for testing your 'test_cookie' in your project
         },
 
         /**
-         * The cookie path.
+         * The cookie path
+         *
+         * @type {String}
          */
         path: {
           type: String,
@@ -80,7 +86,8 @@ The following is a simple example for testing your 'test_cookie' in your project
 
         /**
          * The expiration time
-         * @type [Number]
+         *
+         * @type {Number}
          *       Default: 1
          *        0 : Expiration time is set in the past
          *        -1: Never expires
@@ -93,7 +100,8 @@ The following is a simple example for testing your 'test_cookie' in your project
 
         /**
          * Contains the expiration format
-         * @type [String] optional
+         *
+         * @type {String} optional
          *       Default :'d'
          *       's' : seconds
          *       'm' : minutes
@@ -109,7 +117,8 @@ The following is a simple example for testing your 'test_cookie' in your project
         /**
          * Using the Secure option you can tell the browser (or other http clients)
          * to only send the cookie over SSL connections
-         * @type [Boolean]
+         *
+         * @type {Boolean}
          */
         secure: {
           type: Boolean,
@@ -120,7 +129,7 @@ The following is a simple example for testing your 'test_cookie' in your project
         /**
          * HttpOnly
          *
-         * @type [Boolean]
+         * @type {Boolean}
          */
         httpOnly: {
           type: Boolean,
@@ -130,7 +139,8 @@ The following is a simple example for testing your 'test_cookie' in your project
 
         /**
          * Create the cookie automatically as the element is rendered on the DOM
-         * @type [Boolean]
+         *
+         * @type {Boolean}
          */
         autoSet: {
           type: Boolean,
@@ -139,12 +149,36 @@ The following is a simple example for testing your 'test_cookie' in your project
         }
       },
 
+      /**
+       * _setCookie
+       * private method that returns a valid cookie string
+       *
+       * @param  {String} expires   the cookie expiration time in UTC format
+       *
+       * @return {String}           The formatted cookie ready to be
+       *                            sent into the document
+       */
+      _setCookie: function(expires) {
+        return [
+          this.name, '=', this.value,
+          ';expires=' + expires,
+          this.path && ';path=' + this.path,
+          this.domain && ";domain=" + this.domain,
+          this.secure ? ';secure' : '',
+          this.httpOnly ? ';HttpOnly' : '',
+          ';'
+        ].join('');
+      },
+
       ready: function() {
         if (!!this.autoSet) {
           this.createCookie();
         }
       },
 
+      /**
+       * Create a cookie
+       */
       createCookie: function() {
         var FOREVER = 'Fri, 31 Dec 9999 23:59:59 GMT';
         var date = new Date();
@@ -171,20 +205,12 @@ The following is a simple example for testing your 'test_cookie' in your project
 
         expires = this.time === -1 ? FOREVER : date.toUTCString();
 
-        document.cookie = [
-          this.name, '=', this.value,
-          ';expires=' + expires,
-          !!this.path && ';path=' + this.path,
-          !!this.domain && ";domain=" + this.domain,
-          this.secure ? ';secure' : '',
-          this.httpOnly ? ';HttpOnly' : '',
-          ';'
-        ].join('');
+        document.cookie = this._setCookie(expires);
       },
 
       /**
        * Read the cookie value
-       * @return [String] Return the cookie value in a string format
+       * @return {String} Return the cookie value in a string format
        */
       readCookie: function() {
         var reg = new RegExp('(?:(?:^|.*;\\s*)' +

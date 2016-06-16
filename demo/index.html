@@ -1,12 +1,24 @@
 <!doctype html>
 <html>
+  <!--
+   Copyright (c) 2015 Andrea SonnY. All rights reserved.
+   This code may only be used under the MIT license found at https://github.com/andreasonny83/polymer-cookie/blob/master/LICENSE
+  -->
   <head>
     <title>polymer-cookie demo page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../polymer-cookie.html">
   </head>
   <body>
-    <h1>polymer-cookie</h1>
+    <div class="vertical-section-container centered">
+      <h3>polymer-cookie Demo</h3>
+
+      <p>Open your browser's code inspector to see the cookie status.</p>
+      <p>This 'test_cookie' will expire in 10 seconds.</p>
+    </div>
+
     <polymer-cookie
       id="test_cookie"
       name="test_cookie"
@@ -16,7 +28,5 @@
       auto-set>
     </polymer-cookie>
 
-    <p>Open your browser's code inspector to see the cookie status.</p>
-    <p>This 'test_cookie' will expire in 10 seconds.</p>
   </body>
 </html>
