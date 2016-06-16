@@ -179,7 +179,7 @@ The following is a simple example for testing your 'test_cookie' in your project
           this.secure ? ';secure' : '',
           this.httpOnly ? ';HttpOnly' : '',
           ';'
-        ].join('');
+        ].filter(Boolean).join('');
       },
 
       /**
