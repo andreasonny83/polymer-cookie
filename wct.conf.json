@@ -2,10 +2,7 @@
   "verbose": false,
   "plugins": {
     "local": {
-      "browsers": [{
-        "browserName": "firefox",
-        "version": "44"
-        }]
+      "browsers": ["firefox"]
     }
   }
 }
