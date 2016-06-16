@@ -13,18 +13,29 @@
 
     <test-fixture id="basic">
       <template>
-        <polymer-cookie></polymer-cookie>
+        <polymer-cookie auto-set name="tests-are-always" value="amazing" time="15" format="s"></polymer-cookie>
       </template>
     </test-fixture>
 
     <script>
       suite('<polymer-cookie>', function() {
+        var element;
+
+        suiteSetup(function(){
+          element = fixture('basic');
+        });
 
         test('instantiating the element works', function() {
-          var element = fixture('basic');
           assert.equal(element.is, 'polymer-cookie');
         });
 
+        test('should be exists a cookie on document after set', function() {
+          assert.equal(document.cookie, 'tests-are-always=amazing');
+        });
+
+        test('should be return a correct value when read a cookie', function() {
+          assert.equal(element.readCookie(), 'amazing');
+        });
       });
     </script>
   </body>
