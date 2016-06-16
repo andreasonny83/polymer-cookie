@@ -45,7 +45,7 @@
         });
       });
 
-      suite('<polymer-cookie> with attributes', function() {
+      suite('<polymer-cookie> with auto-set attribute', function() {
         var element;
 
         suiteSetup(function(){
@@ -72,7 +72,28 @@
         test('should be return a correct value when read a cookie', function() {
           assert.equal(element.readCookie(), 'amazing');
         });
+      });
 
+      suite('<polymer-cookie> with create document element', function() {
+        var element;
+
+        suiteSetup(function(){
+          element = document.createElement('polymer-cookie');
+
+          element.setAttribute('name', 'hakuna');
+          element.setAttribute('value', 'matata');
+          element.setAttribute('time', 60);
+          element.setAttribute('format', 'd');
+        });
+
+        test('create the element works', function() {
+          assert.equal(element.is, 'polymer-cookie');
+        });
+
+        test('should be set a cookie on document after create it', function() {
+          element.createCookie();
+          assert.equal(element.readCookie(), 'matata');
+        });
       });
     </script>
   </body>
