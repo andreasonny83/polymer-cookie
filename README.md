@@ -2,9 +2,8 @@
 
 > Cookie Web Component for Polymer 1.x
 
-[![npm](https://img.shields.io/npm/v/polymer-cookie.svg?maxAge=86400)]()
 [![Bower](https://img.shields.io/bower/v/polymer-cookie.svg?maxAge=86400)]()
-[![Build Status](https://travis-ci.org/andreasonny83/generator-polymer.svg?branch=master)](https://travis-ci.org/andreasonny83/generator-polymer)
+[![Build Status](https://travis-ci.org/andreasonny83/polymer-cookie.svg?branch=master)](https://travis-ci.org/andreasonny83/polymer-cookie)
 
 ![](http://benschwarz.github.io/bower-badges/badge@2x.png)
 
